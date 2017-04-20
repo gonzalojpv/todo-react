@@ -171,6 +171,7 @@ label[for='toggle-all'] {
 	border: none; /* Mobile Safari */
 	-webkit-appearance: none;
 	appearance: none;
+  left: 0;
 }
 
 .todo-list li .toggle:after {
@@ -189,6 +190,7 @@ label[for='toggle-all'] {
 	display: block;
 	line-height: 1.2;
 	transition: color 0.4s;
+  text-align: left;
 }
 
 .todo-list li.completed label {

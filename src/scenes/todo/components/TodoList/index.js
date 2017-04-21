@@ -1,22 +1,27 @@
 import React from 'react';
 
-const Todo = ({todo, remove}) => {
+const Todo = ({todo, toggle, remove}) => {
   return (
     <li className={ todo.complete? 'completed':'' }>
       <div className="view">
-        <input className="toggle" type="checkbox" id={ 'check-' + todo.id } />
+        <input className="toggle"
+          onClick={ () => {
+            toggle( todo );
+          }}
+          type="checkbox" id={ 'check-' + todo.id } />
         <label htmlFor={ 'check-' + todo.id }>{ todo.title }</label>
-        <button className="destroy"></button>
+        <button className="destroy" onClick={ ()=> {
+            remove( todo.id );
+          } }></button>
       </div>
     </li>
   );
 }
 
-const TodoList = ({todos, remove}) => {
-  console.log( todos );
+const TodoList = ({todos, toggle, remove}) => {
   // Map through the todos
   const todoNode = todos.map((todo) => {
-    return (<Todo todo={todo} key={todo.id} remove={remove}/>)
+    return (<Todo todo={todo} key={todo.id} remove={remove} toggle={toggle} />)
   });
   return (<ul className="todo-list">{todoNode}</ul>);
 }

@@ -33,6 +33,15 @@ export default class TodoApp extends React.Component {
     } );
   }
 
+  toggleTodoComplete( todo: Todo ) {
+
+    this.todoService
+      .update( Object.assign(todo, { complete: !todo.complete }  ) )
+      .then( () => {
+        this.getTodos();
+      } );
+  }
+
   render() {
     // Render JSX
     return (
@@ -46,6 +55,7 @@ export default class TodoApp extends React.Component {
               <section className="main { this.state.data.length > 0? '':'hide'  }">
                 <TodoList
                   todos={this.state.data}
+                  toggle={this.toggleTodoComplete.bind(this)}
                   remove={this.handleRemove.bind(this)}
                 />
               </section>

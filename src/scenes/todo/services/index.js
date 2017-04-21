@@ -28,13 +28,26 @@ export class TodoService extends React.Component {
     };
   }
 
-  create( todo: Todo  ) {
+  create( todo: Todo ) {
 
     todo.complete = todo.complete ? 1: 0 ;
     let params = this.serialize( todo );
 
     return axios.post( this.apiUrl, params, { 'headers': this.headers} )
       .then( response => response.data )
+      .catch( (error) => {
+        console.log( "error" ,error );
+      } );
+  }
+
+  update( todo: Todo ) {
+
+    const url = `${this.apiUrl}${todo.id}`;
+    let params = this.serialize( todo );
+
+    return axios
+      .put( url, params,  { 'headers': this.headers } )
+      .then( () => todo )
       .catch( (error) => {
         console.log( "error" ,error );
       } );

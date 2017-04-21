@@ -25,6 +25,14 @@ export default class TodoApp extends React.Component {
 
   }
 
+  addTodo( val ) {
+    this.todoService.create( new Todo({
+      title: val
+    }) ).then( response => {
+      this.getTodos();
+    } );
+  }
+
   render() {
     // Render JSX
     return (
@@ -49,12 +57,6 @@ export default class TodoApp extends React.Component {
       </div>
 
     );
-  }
-
-  addTodo( val ) {
-    this.todoService.create( new Todo({
-      title: val
-    }) );
   }
 
   handleRemove( id ) {

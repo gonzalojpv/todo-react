@@ -2,10 +2,10 @@ import React from 'react';
 
 const Todo = ({todo, remove}) => {
   return (
-    <li>
+    <li className={ todo.complete? 'completed':'' }>
       <div className="view">
-        <input className="toggle" type="checkbox" id="check-{ todo.id }" />
-        <label htmlFor="check-{ todo.id }">{ todo.title }</label>
+        <input className="toggle" type="checkbox" id={ 'check-' + todo.id } />
+        <label htmlFor={ 'check-' + todo.id }>{ todo.title }</label>
         <button className="destroy"></button>
       </div>
     </li>

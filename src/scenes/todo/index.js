@@ -12,14 +12,7 @@ export default class TodoApp extends React.Component {
     // Pass props to parent class
     super(props);
     this.state = {
-      data: [
-        {
-        id: 1,
-        title: "Add new todos and come back any time later, I will save them for you!",
-        user_id: 1,
-        complete: false
-      }
-      ]
+      data: []
     }
     this.todoService = new TodoService();
     this.getTodos();
@@ -42,7 +35,7 @@ export default class TodoApp extends React.Component {
 
           <div className="row">
             <div className="col-sm-12">
-              <section className="main">
+              <section className="main { this.state.data.length > 0? '':'hide'  }">
                 <TodoList
                   todos={this.state.data}
                   remove={this.handleRemove.bind(this)}

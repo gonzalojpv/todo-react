@@ -42,6 +42,14 @@ export default class TodoApp extends React.Component {
       } );
   }
 
+  handleRemove( id ) {
+    
+    this.todoService.delete( id )
+      .then( response => {
+        this.getTodos();
+      } );
+  }
+
   render() {
     // Render JSX
     return (
@@ -69,7 +77,4 @@ export default class TodoApp extends React.Component {
     );
   }
 
-  handleRemove( id ) {
-
-  }
 }

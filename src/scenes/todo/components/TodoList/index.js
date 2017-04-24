@@ -8,10 +8,12 @@ const Todo = ({todo, toggle, remove}) => {
           onClick={ () => {
             toggle( todo );
           }}
-          checked={ todo.complete }
+          defaultChecked={ todo.complete }
           type="checkbox" id={ 'check-' + todo.id } />
         <label htmlFor={ 'check-' + todo.id }>{ todo.title }</label>
-        <button className="destroy" onClick={ ()=> {
+        <button
+          className="destroy"
+          onClick={ ()=> {
             remove( todo.id );
           } }></button>
       </div>

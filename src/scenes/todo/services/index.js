@@ -64,6 +64,19 @@ export class TodoService extends React.Component {
     } );
   }
 
+  delete( id: number ) {
+
+    const url = `${this.apiUrl}${id}`;
+
+    return axios
+      .delete( url, { headers: this.headers } )
+      .then( response => response.data )
+      .catch( (error) => {
+        console.log( 'Error:', error );
+      } );
+
+  }
+
   /**
   * Serializes the form element so it can be passed to the back end through the url.
   * The objects properties are the keys and the objects values are the values.

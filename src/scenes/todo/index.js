@@ -43,7 +43,7 @@ export default class TodoApp extends React.Component {
   }
 
   handleRemove( id ) {
-    
+
     this.todoService.delete( id )
       .then( response => {
         this.getTodos();
@@ -70,7 +70,7 @@ export default class TodoApp extends React.Component {
             </div>
           </div>
 
-          <Footer/>
+          <Footer todos={this.state.data} />
         </section>
       </div>
 
